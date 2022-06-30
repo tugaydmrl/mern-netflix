@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Featured from "../../components/Featured/Featured";
 import List from "../../components/List/List";
 import { useEffect, useState } from "react";
-import { axiosInstance } from "../../config";
+import axios from "axios";
 
 const Homepage = ({ type }) => {
   const [lists, setLists] = useState([]);
@@ -12,7 +12,7 @@ const Homepage = ({ type }) => {
   useEffect(() => {
     const getRandomLists = async () => {
       try {
-        const res = await axiosInstance.get(
+        const res = await axios.get(
           `lists${type ? "?type=" + type : ""}${
             genre ? "&genre=" + genre : ""
           }`,
